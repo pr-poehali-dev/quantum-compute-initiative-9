@@ -14,6 +14,7 @@ export function CTASection() {
             <Button
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 pulse-button text-lg px-8 py-4"
+              onClick={() => window.open("https://vk.com/vainberg_gta", "_blank")}
             >
               Заказать инфографику
             </Button>
