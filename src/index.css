@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 30 15% 8%;
-    --foreground: 35 30% 92%;
+    --background: 240 15% 4%;
+    --foreground: 210 40% 96%;
 
-    --card: 30 12% 11%;
-    --card-foreground: 35 30% 92%;
+    --card: 240 12% 7%;
+    --card-foreground: 210 40% 96%;
 
-    --popover: 30 12% 11%;
-    --popover-foreground: 35 30% 92%;
+    --popover: 240 12% 7%;
+    --popover-foreground: 210 40% 96%;
 
-    --primary: 35 85% 55%;
-    --primary-foreground: 30 15% 8%;
+    --primary: 270 100% 65%;
+    --primary-foreground: 240 15% 4%;
 
-    --secondary: 30 10% 16%;
-    --secondary-foreground: 35 30% 92%;
+    --secondary: 240 10% 12%;
+    --secondary-foreground: 210 40% 96%;
 
-    --muted: 30 10% 16%;
-    --muted-foreground: 35 15% 60%;
+    --muted: 240 10% 12%;
+    --muted-foreground: 215 20% 55%;
 
-    --accent: 5 70% 50%;
-    --accent-foreground: 35 30% 92%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 240 15% 4%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 35 30% 92%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 30 10% 20%;
-    --input: 30 12% 14%;
-    --ring: 35 85% 55%;
+    --border: 240 8% 14%;
+    --input: 240 12% 9%;
+    --ring: 270 100% 65%;
 
     --radius: 0.5rem;
   }
@@ -54,15 +54,32 @@
 
   h1,
   h2,
-  h3,
-  h4 {
-    font-family: "Playfair Display", serif;
+  h3 {
+    font-family: "Orbitron", sans-serif;
   }
 }
 
 @layer components {
   .font-display {
-    font-family: "Playfair Display", serif;
+    font-family: "Orbitron", sans-serif;
+  }
+
+  .neon-text {
+    text-shadow:
+      0 0 10px hsl(var(--primary) / 0.8),
+      0 0 30px hsl(var(--primary) / 0.4);
+  }
+
+  .neon-cyan {
+    text-shadow:
+      0 0 10px hsl(var(--accent) / 0.8),
+      0 0 30px hsl(var(--accent) / 0.4);
+  }
+
+  .neon-border {
+    box-shadow:
+      0 0 10px hsl(var(--primary) / 0.3),
+      inset 0 0 10px hsl(var(--primary) / 0.05);
   }
 
   .fade-in {
@@ -74,25 +91,6 @@
     animation: slideUp 0.8s ease-out forwards;
     opacity: 0;
     transform: translateY(30px);
-  }
-
-  .ornament-line {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .ornament-line::before,
-  .ornament-line::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      hsl(var(--primary) / 0.6),
-      transparent
-    );
   }
 }
 
@@ -118,11 +116,16 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
+@keyframes pulse-neon {
+  0%,
   100% {
-    background-position: 200% center;
+    box-shadow:
+      0 0 10px hsl(270 100% 65% / 0.4),
+      0 0 30px hsl(270 100% 65% / 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 20px hsl(270 100% 65% / 0.7),
+      0 0 50px hsl(270 100% 65% / 0.3);
   }
 }

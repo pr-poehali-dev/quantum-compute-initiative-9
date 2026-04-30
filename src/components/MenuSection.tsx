@@ -1,108 +1,104 @@
-import { useState } from "react";
-
-const categories = ["Все", "Шаурма", "Бургеры"];
-
-const dishes = [
+const tariffs = [
   {
-    name: "Шаурма Классическая",
-    description: "Сочное мясо, свежие овощи, фирменный соус в тонком лаваше",
-    price: "—",
-    category: "Шаурма",
-    emoji: "🌯",
-    tag: "Хит",
+    name: "Стандарт",
+    price: "80 ₽",
+    per: "/ час",
+    color: "border-border",
+    highlight: false,
+    features: [
+      "ПК Core i5 / RTX 3060",
+      "Монитор 144 Гц",
+      "Игровая периферия",
+      "Доступ к 100+ играм",
+      "Высокоскоростной интернет",
+    ],
   },
   {
-    name: "Шаурма Сырная",
-    description: "Мясо с расплавленным сыром, овощами и сырным соусом",
-    price: "—",
-    category: "Шаурма",
-    emoji: "🧀",
-    tag: null,
+    name: "VIP",
+    price: "150 ₽",
+    per: "/ час",
+    color: "border-primary",
+    highlight: true,
+    features: [
+      "ПК Core i9 / RTX 4080",
+      "Монитор 240 Гц изогнутый",
+      "Топовая периферия HyperX",
+      "Приоритетное бронирование",
+      "Отдельная VIP-зона",
+    ],
   },
   {
-    name: "Шаурма Тейсти",
-    description: "Пикантное мясо с острым соусом, перцем халапеньо и хрустящими овощами",
-    price: "—",
-    category: "Шаурма",
-    emoji: "🌶️",
-    tag: null,
-  },
-  {
-    name: "Шаурма Чешская",
-    description: "Мясо с чесночным соусом, маринованными огурчиками и зеленью",
-    price: "—",
-    category: "Шаурма",
-    emoji: "🫔",
-    tag: null,
-  },
-  {
-    name: "Бургер Классический",
-    description: "Сочная котлета, листья салата, томат, лук, фирменный соус в булочке",
-    price: "—",
-    category: "Бургеры",
-    emoji: "🍔",
-    tag: null,
+    name: "Ночной",
+    price: "500 ₽",
+    per: "/ ночь",
+    color: "border-accent",
+    highlight: false,
+    features: [
+      "Любой ПК на выбор",
+      "С 23:00 до 8:00",
+      "Безлимитный доступ",
+      "Бесплатный чай/кофе",
+      "Скидка 40% vs обычного",
+    ],
   },
 ];
 
-const MenuSection = () => {
-  const [activeCategory, setActiveCategory] = useState("Все");
-
-  const filtered = activeCategory === "Все"
-    ? dishes
-    : dishes.filter((d) => d.category === activeCategory);
-
+const TariffsSection = () => {
   return (
-    <section id="menu" className="py-24 px-6 bg-background">
+    <section id="tariffs" className="py-24 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-primary text-sm tracking-[0.3em] uppercase mb-3">Наше</p>
-          <h2 className="font-display text-5xl font-bold text-foreground mb-6">Меню</h2>
-          <div className="ornament-line max-w-xs mx-auto">
-            <span className="text-primary">✦</span>
-          </div>
+          <p className="text-accent text-xs tracking-[0.5em] uppercase mb-3 neon-cyan">Выбери свой уровень</p>
+          <h2 className="font-display text-4xl md:text-5xl font-black text-foreground mb-4">
+            ТАРИФЫ
+          </h2>
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm tracking-wider uppercase transition-all duration-300 ${
-                activeCategory === cat
-                  ? "bg-primary text-primary-foreground"
-                  : "border border-border text-muted-foreground hover:border-primary hover:text-primary"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {tariffs.map((t) => (
+            <div
+              key={t.name}
+              className={`relative rounded-xl border-2 ${t.color} bg-card p-8 flex flex-col transition-all duration-300 hover:scale-105 ${
+                t.highlight ? "neon-border" : ""
               }`}
             >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filtered.map((dish, i) => (
-            <div
-              key={dish.name}
-              className="flex items-start gap-4 p-5 rounded-lg border border-border bg-card hover:border-primary/40 transition-all duration-300 group"
-              style={{ animationDelay: `${i * 0.05}s` }}
-            >
-              <div className="text-3xl flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-secondary">
-                {dish.emoji}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {dish.name}
-                  </h3>
-                  {dish.tag && (
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary border border-primary/30 flex-shrink-0">
-                      {dish.tag}
-                    </span>
-                  )}
+              {t.highlight && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest rounded-full">
+                  Популярный
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{dish.description}</p>
+              )}
+              <div className="mb-6">
+                <h3 className="font-display text-lg font-black text-foreground mb-2 tracking-wider">{t.name}</h3>
+                <div className="flex items-end gap-1">
+                  <span className={`font-display text-4xl font-black ${t.highlight ? "text-primary neon-text" : t.color === "border-accent" ? "text-accent neon-cyan" : "text-foreground"}`}>
+                    {t.price}
+                  </span>
+                  <span className="text-muted-foreground text-sm mb-1">{t.per}</span>
+                </div>
               </div>
-              <div className="text-primary font-semibold text-lg flex-shrink-0">{dish.price}</div>
+
+              <ul className="space-y-3 flex-1 mb-8">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className={`mt-0.5 text-xs ${t.highlight ? "text-primary" : t.color === "border-accent" ? "text-accent" : "text-muted-foreground"}`}>▶</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="#contacts"
+                className={`block text-center py-3 rounded font-bold text-sm uppercase tracking-widest transition-all duration-300 ${
+                  t.highlight
+                    ? "bg-primary text-primary-foreground hover:bg-primary/80"
+                    : t.color === "border-accent"
+                    ? "border border-accent text-accent hover:bg-accent/10"
+                    : "border border-border text-foreground hover:border-primary hover:text-primary"
+                }`}
+              >
+                Выбрать
+              </a>
             </div>
           ))}
         </div>
@@ -111,4 +107,4 @@ const MenuSection = () => {
   );
 };
 
-export default MenuSection;
+export default TariffsSection;
