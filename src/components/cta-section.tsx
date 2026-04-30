@@ -22,6 +22,7 @@ export function CTASection() {
               size="lg"
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8 py-4 bg-transparent"
+              onClick={() => document.getElementById("safety")?.scrollIntoView({ behavior: "smooth" })}
             >
               Посмотреть примеры
             </Button>
