@@ -12,7 +12,7 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="font-orbitron text-xl font-bold text-white">
-              Synapse<span className="text-red-500">AI</span>
+              Infо<span className="text-red-500">Граф</span>
             </h1>
           </div>
 
@@ -23,10 +23,10 @@ export function Navbar() {
                 href="#technology"
                 className="font-geist text-white hover:text-red-500 transition-colors duration-200"
               >
-                Технологии
+                Преимущества
               </a>
               <a href="#safety" className="font-geist text-white hover:text-red-500 transition-colors duration-200">
-                Безопасность
+                Как это работает
               </a>
               <a href="#faq" className="font-geist text-white hover:text-red-500 transition-colors duration-200">
                 Вопросы
@@ -36,7 +36,7 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-red-500 hover:bg-red-600 text-white font-geist border-0">В лист ожидания</Button>
+            <Button className="bg-red-500 hover:bg-red-600 text-white font-geist border-0">Заказать инфографику</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -77,7 +77,7 @@ export function Navbar() {
               </a>
               <div className="px-3 py-2">
                 <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-geist border-0">
-                  В лист ожидания
+                  Заказать инфографику
                 </Button>
               </div>
             </div>
