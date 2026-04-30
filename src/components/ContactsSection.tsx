@@ -15,8 +15,7 @@ const ContactsSection = () => {
             <div className="text-3xl mb-4">📍</div>
             <h3 className="font-display font-semibold text-foreground mb-2">Адрес</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Укажите ваш адрес<br />
-              город, улица, дом
+              ул. Льва Толстого, 143
             </p>
           </div>
           <div className="text-center p-8 rounded-xl border border-border bg-card hover:border-primary/40 transition-all duration-300">
